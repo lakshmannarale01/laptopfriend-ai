@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/laptopfriend_ai
+    username: postgres  # Your Postgres username
+    password: root  # Your Postgres password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update  # Auto-creates tables (perfect for dev)
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  devtools:
+    restart:
+      enabled: true
+
+server:
+  port: 2004
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+logging:
+  level:
+    com.laptopfriend: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
