@@ -14,7 +14,17 @@ spring:
   devtools:
     restart:
       enabled: true
-
+  security:
+    user:
+      name: admin
+      password: password  # Change later!
+    csrf:
+      enabled: false
+management:
+    endpoints:
+      web:
+        exposure:
+          include: health,info
 server:
   port: 2004
 
