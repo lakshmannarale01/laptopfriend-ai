@@ -16,7 +16,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/voice")
 @Tag(name = "Voice AI Controller", description = "Laptop control via voice")
-@CrossOrigin(origins = "http://localhost:3000")  // React frontend
+@CrossOrigin(origins = "http://localhost:3001")  // React frontend
 public class VoiceController {
     private final VoiceInteractionRepository repository;
     private final CommandExecutorService commandExecutor;

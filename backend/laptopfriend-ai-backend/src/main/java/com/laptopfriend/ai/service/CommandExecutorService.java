@@ -28,12 +28,16 @@ public class CommandExecutorService {
         COMMAND_MAP.put("open calculator", "calc.exe");
         COMMAND_MAP.put("कॅल्क्युलेटर उघडा", "calc.exe");
 
-        COMMAND_MAP.put("open browser", "start chrome");  // Windows
-        COMMAND_MAP.put("ब्राउजर उघडा", "start chrome");
+        COMMAND_MAP.put("open browser", "cmd.exe /c start chrome");  // Windows
+        COMMAND_MAP.put("ब्राउजर उघडा", "cmd.exe /c start chrome");
+        COMMAND_MAP.put("open chrome", "cmd.exe /c start chrome");
 
         COMMAND_MAP.put("open desktop", "explorer.exe %USERPROFILE%\\Desktop");
         COMMAND_MAP.put("डेस्कटॉप दाखवा", "explorer.exe %USERPROFILE%\\Desktop");
+        COMMAND_MAP.put("डेस्कटॉप उघडा", "explorer.exe %USERPROFILE%\\Desktop");
 
+        COMMAND_MAP.put("open terminal", "cmd.exe");
+        COMMAND_MAP.put("terminal उघडा", "cmd.exe");
         // Linux/Mac alternatives
         COMMAND_MAP.put("open terminal", System.getProperty("os.name").toLowerCase().contains("win") ?
                 "cmd.exe" : "gnome-terminal");  // Linux

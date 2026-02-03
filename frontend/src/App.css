@@ -1,0 +1,42 @@
+.App {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.mic-btn {
+  font-size: 24px;
+  padding: 15px 30px;
+  margin: 10px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.listen { background: #4CAF50; color: white; }
+.stop { background: #f44336; color: white; }
+.history-btn { background: #2196F3; color: white; }
+
+.transcript {
+  background: #f0f8ff;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.history-item {
+  background: #e3f2fd;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: left;
+  border-left: 5px solid #2196F3;
+}
+
+.history-item span {
+  color: #666;
+  font-family: monospace;
+}
