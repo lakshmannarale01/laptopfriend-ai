@@ -2,6 +2,7 @@ package com.laptopfriend.ai.controller;
 
 import com.laptopfriend.ai.entity.VoiceInteraction;
 import com.laptopfriend.ai.repository.VoiceInteractionRepository;
+import com.laptopfriend.ai.service.CommandExecutorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import java.util.Map;
 @CrossOrigin(origins = "http://localhost:3000")  // React frontend
 public class VoiceController {
     private final VoiceInteractionRepository repository;
+    private final CommandExecutorService commandExecutor;
 
     @PostMapping("/command")
     @Operation(summary = "Process voice command" , description = "Store the voice Interaction + execute command")
@@ -25,16 +27,19 @@ public class VoiceController {
         String originalText = request.get("originalVoiceText");
         String translatedText = request.get("translatedText");
         String language = request.get("language");
-        // TODO : Real AI + Laptop Control here
-        String aiResponse = "Understood '"+translatedText+"' ! Executing .....(demo)";
+        // TODO : Real Treanslation and AI here
+        String aiResponse = "ठीक आहे! मी '" + translatedText + "' करतोय...";  // Hindi response
         String commandExecuted = "demo_"+translatedText;
-        VoiceInteraction interaction = new VoiceInteraction(originalText , translatedText , aiResponse , commandExecuted , language);
+        VoiceInteraction interaction = new VoiceInteraction(originalText , translatedText , aiResponse , null , language);
+       // Execute command
+        String commandResult = commandExecutor.executeCommand(translatedText,interaction);
+        interaction.setAiResponse(aiResponse+"\n"+commandResult);
         repository.save(interaction);
         return ResponseEntity.ok(Map.of(
                 "success", true,
-                "message", aiResponse,
-                "interactionId", interaction.getId(),
-                "storedCount", repository.count()
+                "aiResponse", interaction.getAiResponse(),
+                "commandExecuted", interaction.getCommandExecuted(),
+                "interactionId", interaction.getId()
         ));
     }
 
